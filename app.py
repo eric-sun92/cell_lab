@@ -15,3 +15,10 @@ st.markdown(label_text, unsafe_allow_html=True)
 
 selected = st.text_input("", "Search...")
 
+
+
+# selected == gene 
+# need to connect these somehow
+
+# then add a done button to signal done
+
