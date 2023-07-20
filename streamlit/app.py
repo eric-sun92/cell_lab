@@ -1,24 +1,28 @@
+# Welcome to the code for polymer solubilization analysis
+
+import pandas as pd                       # pandas = package for excel
+from pandas import ExcelWriter            # save to excel
+import numpy as np                        # another package for number and excel analysis
+from itertools import groupby
+from datetime import datetime             # append current time to any output
+from datetime import date    
+import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib import interactive
+
 import streamlit as st
 
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# import pages
+from singlePage import single
+from multiplePage import multiple
 
-def remote_css(url):
-    st.markdown(f'<link href="{url}" rel="stylesheet">', unsafe_allow_html=True)    
+# Using object notation
+method = st.sidebar.selectbox(
+    "Method",
+    ("Single", "Multiple")
+)
 
-local_css("style.css")
-remote_css('https://fonts.googleapis.com/icon?family=Material+Icons')
-
-label_text = "<div class='custom-label'>What gene name would you like to search for? (Or enter 'done') to finish...</div>"
-st.markdown(label_text, unsafe_allow_html=True)
-
-selected = st.text_input("", "Search...")
-
-
-
-# selected == gene 
-# need to connect these somehow
-
-# then add a done button to signal done
-
+if method == "Single":
+    single()
+elif method == "Multiple":
+    multiple()
