@@ -16,6 +16,10 @@ import streamlit as st
 from singlePage import single
 from multiplePage import multiple
 
+
+with open('./streamlit/style.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 # Using object notation
 method = st.sidebar.selectbox(
     "Method",
@@ -26,3 +30,4 @@ if method == "Single":
     single()
 elif method == "Multiple":
     multiple()
+    

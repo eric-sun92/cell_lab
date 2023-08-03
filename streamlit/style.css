@@ -1,15 +1,10 @@
 body {
     color: #fff;
     background-color: #4F8BF9;
-}
-
-.stTextInput>div>div>input {
-    color: #4F8BF9;
-    margin: 0;
+    display: flex
 }
 
 .custom-label {
-    color: #4F8BF9;
     margin: 0px;
     font-size: 1.2rem;
 }
