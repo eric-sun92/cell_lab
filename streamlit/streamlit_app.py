@@ -22,10 +22,14 @@ with open('./streamlit/style.css') as f:
 
 # Using object notation
 method = st.sidebar.selectbox(
-    "Method",
-    ("Single", "Multiple")
+    label="Select a Method",
+    options=("Single", "Multiple"),
+    index=0,
+    key="method_select",
+    help="Choose a method",
+    label_visibility="hidden"  # Hide the label from view
 )
-
+    
 if method == "Single":
     single()
 elif method == "Multiple":
