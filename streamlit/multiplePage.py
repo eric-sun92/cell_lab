@@ -37,17 +37,9 @@ def process_and_save_data(gene_data):
     
     return output, filename
 
-# Load the Excel file
-data = pd.read_excel("initialCode/solubilization_index.xlsx")
-data = data.iloc[:, :-1]
-data.columns = [col.replace(" index", "") for col in data.columns]
-data.set_index(data.columns[0], inplace=True)
-
-# Initialize dictionary with column names as keys
-gene_data = {col: 0 for col in data.columns[1:]}
 
 # Function to update gene data in the dictionary
-def update_gene_data(gene_name):
+def update_gene_data(gene_name, data, gene_data):
     # while gene_name not in data.index:
     #     print(f"Gene '{gene_name}' not found in the Excel sheet.")
     #     gene_name = input("Please enter a valid gene name: ")
@@ -58,10 +50,23 @@ def update_gene_data(gene_name):
     else:
         st.write(f"Gene '{gene_name}' not found in the Excel sheet.")
     
+    return gene_data
+    
 def multiple():
 
     # Initialize SessionState
     session_state = SessionState()
+    
+    global gene_data
+
+    # Load the Excel file
+    data = pd.read_excel("initialCode/solubilization_index.xlsx")
+    data = data.iloc[:, :-1]
+    data.columns = [col.replace(" index", "") for col in data.columns]
+    data.set_index(data.columns[0], inplace=True)
+
+    # Initialize dictionary with column names as keys
+    gene_data = {col: 0 for col in data.columns[1:]}
 
     # Form for entering multiple gene names and Done button
     with st.form("multi_submit"):
@@ -78,10 +83,12 @@ def multiple():
 
     if submitted:
         gene_array = genes.split(", ")
+        
+        gene_data = {col: 0 for col in data.columns[1:]}
 
         for g in gene_array:
             st.write(g)
-            update_gene_data(g)
+            gene_data = update_gene_data(g, data, gene_data)
 
         for col in gene_data.keys():
             gene_data[col] /= len(gene_array)
@@ -100,6 +107,17 @@ def multiple():
         st.pyplot(fig)
     
     if session_state.done_clicked or done_submitted:
+        gene_array = genes.split(", ")
+        
+        gene_data = {col: 0 for col in data.columns[1:]}
+
+        for g in gene_array:
+            st.write(g)
+            gene_data = update_gene_data(g, data, gene_data)
+
+        for col in gene_data.keys():
+            gene_data[col] /= len(gene_array)
+        
         st.write("Data processed and Excel file saved!")
         
         # Provide download button for the 'gene_data' DataFrame

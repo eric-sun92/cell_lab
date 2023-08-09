@@ -32,6 +32,7 @@ def process_and_save_data(gene_name):
     selected_row = normalizedto100_df[normalizedto100_df['Gene names'] == gene_name]
     final_df = pd.DataFrame(selected_row)
 
+
     # frames = {'Original data': sample_df, 'Reference': ref_df, 'Averages added': sample_df_avg,
     #           'Averages and sums': sample_df_avg_sum, 'Simplified': normalized_df, 'Normalized': normalized2_df,
     #           'Relative percent sol': normalizedto100_df, 'final': final_df}
@@ -80,6 +81,8 @@ def single():
             # Create the bar plot
                 fig, ax = plt.subplots()
                 display_3 = normalizedto100_df[normalizedto100_df['Gene names'].str.contains(gene_name,na=False)].max(numeric_only=True,axis=0)
+                print(display_3)
+                display_3 = display_3.drop("Mol. weight [kDa]", axis=0)
                 display_3.T.plot.bar(ax=ax)
 
                 # Display the plot using st.pyplot
