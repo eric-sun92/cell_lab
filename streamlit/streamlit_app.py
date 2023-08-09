@@ -16,22 +16,87 @@ import streamlit as st
 from singlePage import single
 from multiplePage import multiple
 
+from streamlit_option_menu import option_menu
 
-with open('./streamlit/style.css') as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# 1=sidebar menu, 2=horizontal menu, 3=horizontal menu w/ custom menu
+EXAMPLE_NO = 1
 
-# Using object notation
-method = st.sidebar.selectbox(
-    label="Select a Method",
-    options=("Single", "Multiple"),
-    index=0,
-    key="method_select",
-    help="Choose a method",
-    label_visibility="hidden"  # Hide the label from view
-)
-    
-if method == "Single":
+def streamlit_menu(example=1):
+    if example == 1:
+        # 1. as sidebar menu
+        with st.sidebar:
+            selected = option_menu(
+                menu_title="Main Menu",  # required
+                options=["Home", "Single", "Multiple", "Calculations"],  # required
+                icons=["house", "book", "book", "book"],  # optional
+                menu_icon="cast",  # optional
+                default_index=0,  # optional
+            )
+        return selected
+
+    if example == 2:
+        # 2. horizontal menu w/o custom style
+        selected = option_menu(
+                menu_title="Main Menu",  # required
+                options=["Home", "Single", "Multiple", "Calculations"],  # required
+                icons=["house", "book", "book", "book"],  # optional
+                menu_icon="cast",  # optional
+                default_index=0,  # optional
+            )
+        return selected
+
+    if example == 3:
+        # 2. horizontal menu with custom style
+        selected = option_menu(
+                menu_title="Main Menu",  # required
+                options=["Home", "Single", "Multiple", "Calculations"],  # required
+                icons=["house", "book", "book", "book"],  # optional
+                menu_icon="cast",  # optional
+                default_index=0,  # optional
+        )
+        return selected
+
+    if example == 4:
+        # 2. horizontal menu with custom style
+        selected = option_menu(
+                menu_title="Main Menu",  # required
+                options=["Home", "Single", "Multiple", "Calculations"],  # required
+                icons=["house", "book", "book", "book"],  # optional
+                menu_icon="cast",  # optional
+                default_index=0,  # optional
+    )
+        return selected
+
+
+selected = streamlit_menu(example=EXAMPLE_NO)
+
+if selected == "Home":
+    st.title(f"You have selected {selected}")
+if selected == "Single":
     single()
-elif method == "Multiple":
+if selected == "Multiple":
     multiple()
+if selected == "Calculations":
+    st.title(f"You have selected {selected}")
+    
+    
+
+
+# with open('./streamlit/style.css') as f:
+#     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+# # Using object notation
+# method = st.sidebar.selectbox(
+#     label="Select a Method",
+#     options=("Single", "Multiple"),
+#     index=0,
+#     key="method_select",
+#     help="Choose a method",
+#     label_visibility="hidden"  # Hide the label from view
+# )
+    
+# if method == "Single":
+#     single()
+# elif method == "Multiple":
+#     multiple()
     
