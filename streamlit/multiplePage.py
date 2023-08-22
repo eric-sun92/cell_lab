@@ -43,6 +43,8 @@ def update_gene_data(gene_name, data, gene_data):
     # while gene_name not in data.index:
     #     print(f"Gene '{gene_name}' not found in the Excel sheet.")
     #     gene_name = input("Please enter a valid gene name: ")
+    print(data)
+    print(gene_data)
     if gene_name in data.index:
         row_data = data.loc[gene_name]
         for col in gene_data.keys():
@@ -53,7 +55,7 @@ def update_gene_data(gene_name, data, gene_data):
     return gene_data
     
 def multiple():
-
+    st.title("Multi-protein Network Analysis:")
     # Initialize SessionState
     session_state = SessionState()
     
@@ -70,7 +72,7 @@ def multiple():
 
     # Form for entering multiple gene names and Done button
     with st.form("multi_submit"):
-        st.write("Multi-Gene Graph Search")
+        # st.write("Multi-Gene Graph Search")
         label_text = "<div class='custom-label'>Enter genes separated with a comma:</div>"
         st.markdown(label_text, unsafe_allow_html=True)
 
@@ -84,7 +86,8 @@ def multiple():
     if submitted:
         gene_array = genes.split(", ")
         
-        gene_data = {col: 0 for col in data.columns[1:]}
+        gene_data = {col: 0 for col in data.columns[:]}
+        st.markdown("**Searched for gene names:**")
 
         for g in gene_array:
             st.write(g)
@@ -97,7 +100,7 @@ def multiple():
             
         plt.bar(gene_data.keys(), gene_data.values())
         plt.ylabel('Value')
-        plt.title('Solubilization Index Calculator')
+        plt.title('Native Extraction Index')
         plt.xticks(rotation=90)
 
         # Display the value inside each bar
@@ -110,7 +113,9 @@ def multiple():
         gene_array = genes.split(", ")
         
         gene_data = {col: 0 for col in data.columns[1:]}
-
+        
+        st.write("Searched for gene names:")
+        
         for g in gene_array:
             st.write(g)
             gene_data = update_gene_data(g, data, gene_data)
@@ -130,3 +135,12 @@ def multiple():
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             key="download_multi"
         )
+        
+    # Footer
+    from PIL import Image
+
+    image = Image.open('streamlit/your_banner_image.jpg')
+    
+    st.markdown("---")
+    st.image(image)
+    st.write("© 2023 Yale School of Medicine. All rights reserved.")

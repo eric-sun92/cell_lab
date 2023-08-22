@@ -48,6 +48,7 @@ def process_and_save_data(gene_name):
 
 def single():
     # Include the CSS file
+    st.title("Single Protein Search:")
 
     # Include the JavaScript file
     st.markdown('<script src="./streamlit/script.js"></script>', unsafe_allow_html=True)
@@ -57,7 +58,6 @@ def single():
 
     # Form for searching gene name and Done button
     with st.form("my_form"):
-        st.write("Singe-Gene Graph Search")
         label_text = "<div class='custom-label'>What gene name would you like to search for?</div>"
         st.markdown(label_text, unsafe_allow_html=True)
 
@@ -101,6 +101,15 @@ def single():
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 key="download_button"
         )
+    
+    # Footer
+    from PIL import Image
+
+    image = Image.open('streamlit/your_banner_image.jpg')
+    
+    st.markdown("---")
+    st.image(image)
+    st.write("© 2023 Yale School of Medicine. All rights reserved.")
 
 
 # def single():
