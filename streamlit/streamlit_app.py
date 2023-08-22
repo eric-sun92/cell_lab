@@ -112,24 +112,3 @@ if selected == "Multi-protein Network Analysis":
 if selected == "General Methods":
     general()
     
-    
-
-
-# with open('./streamlit/style.css') as f:
-#     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
-# # Using object notation
-# method = st.sidebar.selectbox(
-#     label="Select a Method",
-#     options=("Single", "Multiple"),
-#     index=0,
-#     key="method_select",
-#     help="Choose a method",
-#     label_visibility="hidden"  # Hide the label from view
-# )
-    
-# if method == "Single":
-#     single()
-# elif method == "Multiple":
-#     multiple()
-    
