@@ -62,7 +62,7 @@ def multiple():
     global gene_data
 
     # Load the Excel file
-    data = pd.read_excel("initialCode/solubilization_index.xlsx")
+    data = pd.read_excel("dataframes/solubilization_index.xlsx")
     data = data.iloc[:, :-1]
     data.columns = [col.replace(" index", "") for col in data.columns]
     data.set_index(data.columns[0], inplace=True)
