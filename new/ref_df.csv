@@ -1,0 +1,15 @@
+,Replicate Name,Polymer Name,Hydrophobic Group,Hydrophilic Group,Ratio,Chain length
+0,1,RIPA,none,none,none,100
+1,3,SMA200P,Styrene,Maleic Acid,,50
+2,5,SMA200CB,Styrene,Maleic Acid,1:40,5
+3,6,SMA300CB,Styrene,Maleic Acid,1:5,
+4,7,ChloroSMA20,Chlorostyrene,Maleic Acid,1:2,10
+5,8,ChloroSMA40,Chlorostyrene,Maleic Acid,1:3,
+6,9,ChloroSMA60,Chlorostyrene,Maleic Acid,,20
+7,10,ChloroSMA80,Chlorostyrene,Maleic Acid,,21
+8,11,NP40,none,none,,22
+9,12,AASTY645,Styrene,Acrylic Acid,,
+10,13,AASTY650,Styrene,Acrylic Acid,,
+11,14,AASTY1150,Styrene,Acrylic Acid,,
+12,15,AASTY1145,Styrene,Acrylic Acid,,
+13,17,AASTY80,Styrene,Acrylic Acid,,

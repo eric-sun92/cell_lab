@@ -62,7 +62,7 @@ def multiple():
     global gene_data
 
     # Load the Excel file
-    data = pd.read_excel("dataframes/solubilization_index.xlsx")
+    data = pd.read_excel("dataframes/solubilization_index_1.xlsx")
     data = data.iloc[:, :-1]
     data.columns = [col.replace(" index", "") for col in data.columns]
     data.set_index(data.columns[0], inplace=True)
@@ -101,6 +101,7 @@ def multiple():
         plt.bar(gene_data.keys(), gene_data.values())
         plt.ylabel('Value')
         plt.title('Native Extraction Index')
+        plt.xlabel('Extraction Condition')
         plt.xticks(rotation=90)
 
         # Display the value inside each bar

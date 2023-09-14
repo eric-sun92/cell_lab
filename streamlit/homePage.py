@@ -44,8 +44,8 @@ def home():
              optimal native extraction for that  protein of interest serving as a starting point for structural and biochemical studies.
              """)
 
-    st.markdown("<div class='sub-title'>About Us</div>", unsafe_allow_html=True)
-    st.write("With Professor Gupta in the Yale School of Medicine, we are dedicated to advancing our understanding of cellular processes...")
+    st.markdown("<div class='sub-title'>Further Info</div>", unsafe_allow_html=True)
+    st.write("For further information, read our research paper here. 'Link to Paper'")
 
     from PIL import Image
 

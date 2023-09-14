@@ -26,8 +26,8 @@ input('Press Enter to continue...')
 
 # 2a. Upload sample info
 
-sample_file = input('Enter file path containing the MaxQuant(?) output - all you need to do prior is convert from txt to excel:\n')
-####sample_file = "/Users/rachel/Desktop/proteinGroups_dummydata.xlsx"          #####
+# sample_file = input('Enter file path containing the MaxQuant(?) output - all you need to do prior is convert from txt to excel:\n')
+sample_file = "./initialCode/database_nosma100200cbaasty155_09032023.xlsx"          #####
 print ("Starting sample upload....")            
 start = datetime.now()                                                  # Define start to see how long it takes
 sample_array = pd.read_excel(sample_file, header = None).to_numpy()                              # Parse the file and send it to an array format
@@ -40,9 +40,17 @@ sample_df = pd.DataFrame(sample_array, columns = column_list_sample)
 
 # 2b. Upload reference info
 
+# normalized2_df = pd.read_csv('dataframes/normalized2_df.csv', low_memory=False)
+# normalizedto100_df = pd.read_csv('dataframes/normalizedto100_df.csv', low_memory=False)
+# sample_df = pd.read_csv('dataframes/sample_df.csv', low_memory=False)
+# ref_df = pd.read_csv('dataframes/ref_df.csv', low_memory=False)
+# sample_df_avg = pd.read_csv('dataframes/sample_df_avg.csv', low_memory=False)
+# sample_df_avg_sum = pd.read_csv('dataframes/sample_df_avg_sum.csv', low_memory=False)
+# normalized_df = pd.read_csv('dataframes/normalized_df.csv', low_memory=False)
 
-ref_file = input('Enter file path for reference polymers:\n')# File name containing samples in local directory (MSDial output directly converted to excel)
-######ref_file = "/Users/rachel/Desktop/dummy_ref_polymer.xlsx"       #####
+
+# ref_file = input('Enter file path for reference polymers:\n')# File name containing samples in local directory (MSDial output directly converted to excel)
+ref_file = "initialCode/polymer_ref_filtered.xlsx"       #####
 print("Starting sample file upload...")                           # Code is running
 start2 = datetime.now()                                           # Define start to see how long it takes
 ref_array = pd.read_excel(ref_file, header = None).to_numpy()                    # Parse the file and send it to an array format
@@ -77,6 +85,8 @@ for ref in ref_list2:
     name = ref_df[ref_df['Replicate Name'] == int(ref)]['Polymer Name'].item()
     normalized_df.loc[:,name + ' sample avg'] = sample_df_avg_sum[name + ' sample avg']
 ##print(normalized_df)
+# normalized_df.to_csv("./new/normalized_df.csv", index=False)
+
 
 max_sol_df = normalized_df.filter(regex=(' sample avg'))
 ##print(max_sol_df)
@@ -130,8 +140,19 @@ for index,row in normalizedto100_df.iterrows():
         normalizedto100_df.loc[index,name+' sample avg'] = (amount/max_in_row)*100
 
 print(normalizedto100_df)
+# normalizedto100_df.to_csv("./new/normalizedto100_df.csv")
 
 ##print(normalized2_df)
+
+normalizedto100_df.to_csv("./new/normalizedto100_df.csv")
+sample_df.to_csv("./new/sample_df.csv")
+ref_df.to_csv("./new/ref_df.csv")
+sample_df_avg.to_csv("./new/sample_df_avg.csv")
+sample_df_avg_sum.to_csv("./new/sample_df_avg_sum.csv")
+normalized_df.to_csv("./new/normalized_df.csv")
+normalizedto100_df.to_csv("./new/normalizedto100_df.csv")
+normalized2_df.to_csv("./new/normalized2_df.csv")
+
 
 active_searching = True
 while active_searching:

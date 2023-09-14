@@ -9,13 +9,13 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import interactive
 
-normalized2_df = pd.read_csv('dataframes/normalized2_df.csv', low_memory=False)
-normalizedto100_df = pd.read_csv('dataframes/normalizedto100_df.csv', low_memory=False)
-sample_df = pd.read_csv('dataframes/sample_df.csv', low_memory=False)
-ref_df = pd.read_csv('dataframes/ref_df.csv', low_memory=False)
-sample_df_avg = pd.read_csv('dataframes/sample_df_avg.csv', low_memory=False)
-sample_df_avg_sum = pd.read_csv('dataframes/sample_df_avg_sum.csv', low_memory=False)
-normalized_df = pd.read_csv('dataframes/normalized_df.csv', low_memory=False)
+normalized2_df = pd.read_csv('new/normalized2_df.csv', low_memory=False)
+normalizedto100_df = pd.read_csv('new/normalizedto100_df.csv', low_memory=False)
+sample_df = pd.read_csv('new/sample_df.csv', low_memory=False)
+ref_df = pd.read_csv('new/ref_df.csv', low_memory=False)
+sample_df_avg = pd.read_csv('new/sample_df_avg.csv', low_memory=False)
+sample_df_avg_sum = pd.read_csv('new/sample_df_avg_sum.csv', low_memory=False)
+normalized_df = pd.read_csv('new/normalized_df.csv', low_memory=False)
 
 # SessionState class for maintaining app state
 class SessionState:
@@ -80,6 +80,9 @@ def single():
             else:
             # Create the bar plot
                 fig, ax = plt.subplots()
+                plt.ylabel('Extraction Efficiency')
+                plt.xlabel('Extraction Condition')
+
                 display_3 = normalizedto100_df[normalizedto100_df['Gene names'].str.contains(gene_name,na=False)].max(numeric_only=True,axis=0)
                 print(display_3)
                 display_3 = display_3.drop("Mol. weight [kDa]", axis=0)
