@@ -103,6 +103,7 @@ for ref in ref_list2:
 
 
 normalizedto100_df = normalized2_df.copy()
+
 ###normalizedto100_df.loc[~ (normalizedto100_df.select_dtypes(include=['number']) == 0).all(axis='columns'), :]
 ##normalizedto100_df = normalizedto100_df[normalizedto100_df.columns[4:]].replace(0, np.nan)
 ##normalizedto100_df[any(normalizedto100_df[normalizedto100_df.columns[4:]] != 0, axis=1)]
@@ -140,6 +141,8 @@ for index,row in normalizedto100_df.iterrows():
         normalizedto100_df.loc[index,name+' sample avg'] = (amount/max_in_row)*100
 
 print(normalizedto100_df)
+normalizedto100_df.columns = normalizedto100_df.columns.str.replace(' sample avg', '')
+
 # normalizedto100_df.to_csv("./new/normalizedto100_df.csv")
 
 ##print(normalized2_df)
