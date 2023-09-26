@@ -62,7 +62,8 @@ def single():
         st.markdown(label_text, unsafe_allow_html=True)
 
         gene_name = st.text_input("", "Search...", key="gene_name")
-
+        gene_name = gene_name.upper()
+        
         col1, col2 = st.columns([0.85, 0.15])
 
         # Add the "Search" button to the first column
@@ -77,12 +78,14 @@ def single():
         else:
             if gene_name == '':
                 st.write("Please enter a gene name before searching...")
+            elif gene_name not in normalizedto100_df['Gene names']:
+                st.write(f"{gene_name} not found in database")
+
             else:
             # Create the bar plot
                 fig, ax = plt.subplots()
                 plt.ylabel('Extraction Efficiency')
                 plt.xlabel('Extraction Condition')
-
                 display_3 = normalizedto100_df[normalizedto100_df['Gene names'].str.contains(gene_name,na=False)].max(numeric_only=True,axis=0)
                 print(display_3)
                 display_3 = display_3.drop("Mol. weight [kDa]", axis=0)

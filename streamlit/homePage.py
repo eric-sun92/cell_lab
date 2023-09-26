@@ -45,7 +45,7 @@ def home():
              """)
 
     st.markdown("<div class='sub-title'>Further Info</div>", unsafe_allow_html=True)
-    st.write("For further information, read our research paper here. 'Link to Paper'")
+    st.write("For further information, our research paper will be published in the near future.")
 
     from PIL import Image
 

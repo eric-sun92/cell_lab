@@ -77,6 +77,7 @@ def multiple():
         st.markdown(label_text, unsafe_allow_html=True)
 
         genes = st.text_input("", "Gene Names...", key=np.random.randint(1))
+        genes = genes.upper()
 
         col1, col2 = st.columns([0.85, 0.15])
 
@@ -97,7 +98,7 @@ def multiple():
             gene_data[col] /= len(gene_array)
 
         fig, ax = plt.subplots()
-            
+        
         plt.bar(gene_data.keys(), gene_data.values())
         plt.ylabel('Value')
         plt.title('Native Extraction Index')
