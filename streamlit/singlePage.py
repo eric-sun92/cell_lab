@@ -78,9 +78,10 @@ def single():
         else:
             if gene_name == '':
                 st.write("Please enter a gene name before searching...")
-            elif gene_name not in normalizedto100_df['Gene names']:
+            # elif gene_name not in normalizedto100_df['Gene names']:
+            #     st.write(f"{gene_name} not found in database")
+            elif not normalizedto100_df['Gene names'].str.contains(gene_name, na=False).any():
                 st.write(f"{gene_name} not found in database")
-
             else:
             # Create the bar plot
                 fig, ax = plt.subplots()
