@@ -1,0 +1,6 @@
+[server]
+port = 443
+address = "0.0.0.0"
+sslCertFile = "./certchain.pem"
+sslKeyFile = "./private.key"
+

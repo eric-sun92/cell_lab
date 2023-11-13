@@ -10,11 +10,14 @@ COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 8501 available to the world outside this container
+# Make port 443 available to the world outside this container
 EXPOSE 443
+
+# port 80
+EXPOSE 80
 
 # Define environment variable
 ENV NAME World
 
 # Run app.py when the container launches
-CMD ["streamlit", "run", "streamlit/streamlit_app.py"]
+CMD ["streamlit", "run", "streamlit/streamlit_app.py", "--server.port", "443", "--server.address=0.0.0.0"]
