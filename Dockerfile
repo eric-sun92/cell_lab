@@ -20,4 +20,5 @@ EXPOSE 80
 ENV NAME World
 
 # Run app.py when the container launches
-CMD ["streamlit", "run", "streamlit/streamlit_app.py", "--server.port", "443", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "streamlit/streamlit_app.py", "--server.port", "443", "--server.sslCertFile=server.crt", "--server.sslKeyFile=server.key"]
+# CMD ["streamlit run streamlit/streamlit_app.py --server.port 443 --server.sslCertFile=.streamlit/certchain.pem --server.sslKeyFile=.streamlit/private.key"]
