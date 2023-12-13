@@ -47,10 +47,4 @@ def home():
     st.markdown("<div class='sub-title'>Further Info</div>", unsafe_allow_html=True)
     st.write("For further information, our research paper will be published in the near future.")
 
-    from PIL import Image
-
-    image = Image.open('streamlit/your_banner_image.jpg')
-    
-    st.markdown("---")
-    st.image(image)
-    st.write("© 2023 Yale School of Medicine. All rights reserved.")
+  

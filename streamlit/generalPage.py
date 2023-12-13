@@ -44,12 +44,5 @@ def general():
         repositories along with extensive hand-curated libraries.
         """
 )
-    
-    # Footer
-    from PIL import Image
 
-    image = Image.open('streamlit/your_banner_image.jpg')
     
-    st.markdown("---")
-    st.image(image)
-    st.write("© 2023 Yale School of Medicine. All rights reserved.")
