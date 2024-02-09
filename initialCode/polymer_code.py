@@ -27,7 +27,7 @@ input('Press Enter to continue...')
 # 2a. Upload sample info
 
 # sample_file = input('Enter file path containing the MaxQuant(?) output - all you need to do prior is convert from txt to excel:\n')
-sample_file = "./initialCode/database_nosma100200cbaasty155_09032023.xlsx"          #####
+sample_file = "./initialCode/Normalizedtobulk_finaldatabase_website.xlsx"          #####
 print ("Starting sample upload....")            
 start = datetime.now()                                                  # Define start to see how long it takes
 sample_array = pd.read_excel(sample_file, header = None).to_numpy()                              # Parse the file and send it to an array format
